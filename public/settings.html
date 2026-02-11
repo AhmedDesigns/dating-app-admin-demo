@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Dating App Admin Panel</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CodeMirror for text editing -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" id="favicon" href="assets/favicon.ico">
+</head>
+<body class="light-mode">
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="/admin/dashboard.html">
+                <img src="assets/logo.png" alt="Logo" id="navbar-logo" height="30" class="me-2 d-none">
+                <i class="fas fa-heart me-2" id="logo-icon"></i>
+                <span>Admin Panel</span>
+            </a>
+            
+            <div class="d-flex align-items-center">
+                <!-- Dark Mode Toggle -->
+                <div class="form-check form-switch me-3">
+                    <input class="form-check-input" type="checkbox" id="darkModeToggle">
+                    <label class="form-check-label text-white" for="darkModeToggle">
+                        <i class="fas fa-moon"></i>
+                    </label>
+                </div>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/dashboard.html">
+                            <i class="fas fa-home me-1"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/users.html">
+                            <i class="fas fa-users me-1"></i> Users
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/photos.html">
+                            <i class="fas fa-images me-1"></i> Photos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/reports.html">
+                            <i class="fas fa-flag me-1"></i> Reports
+                            <span class="badge bg-danger ms-1" id="reportsBadge">5</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/conversations.html">
+                            <i class="fas fa-comments me-1"></i> Conversations
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin/settings.html">
+                            <i class="fas fa-cog me-1"></i> Settings
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="navbar-nav">
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                            <div class="avatar me-2">
+                                <i class="fas fa-user-circle fa-2x"></i>
+                            </div>
+                            <span id="userName">System Admin</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="settings.html#admins-tab"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container-fluid mt-5 pt-3">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">General Settings</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <button type="button" class="btn btn-sm btn-primary" onclick="saveAllSettings()">
+                    <i class="fas fa-save me-1"></i> Save All Settings
+                </button>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs mb-4" id="settingsTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button">
+                    <i class="fas fa-cog me-1"></i> General Settings
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="branding-tab" data-bs-toggle="tab" data-bs-target="#branding" type="button">
+                    <i class="fas fa-palette me-1"></i> Branding
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="terms-tab" data-bs-toggle="tab" data-bs-target="#terms" type="button">
+                    <i class="fas fa-file-contract me-1"></i> Terms of Service
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="privacy-tab" data-bs-toggle="tab" data-bs-target="#privacy" type="button">
+                    <i class="fas fa-shield-alt me-1"></i> Privacy Policy
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="admins-tab" data-bs-toggle="tab" data-bs-target="#admins" type="button">
+                    <i class="fas fa-users-cog me-1"></i> Admin Management
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="api-tab" data-bs-toggle="tab" data-bs-target="#api" type="button">
+                    <i class="fas fa-code me-1"></i> API Settings
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="settingsContent">
+            <!-- General Settings -->
+            <div class="tab-pane fade show active" id="general" role="tabpanel">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card card-modern mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">App Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="appName" class="form-label">App Name</label>
+                                    <input type="text" class="form-control" id="appName" value="Dating App">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="appVersion" class="form-label">Version</label>
+                                    <input type="text" class="form-control" id="appVersion" value="1.0.0">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="supportEmail" class="form-label">Support Email</label>
+                                    <input type="email" class="form-control" id="supportEmail" value="support@datingapp.com">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="maxPhotosPerUser" class="form-label">Max Photos Per User</label>
+                                    <input type="number" class="form-control" id="maxPhotosPerUser" value="6" min="1" max="10">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card card-modern mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Matching Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="matchRadius" class="form-label">Search Radius (km)</label>
+                                    <input type="number" class="form-control" id="matchRadius" value="50" min="1" max="500">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="minAge" class="form-label">Minimum Age</label>
+                                    <input type="number" class="form-control" id="minAge" value="18" min="18" max="100">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="maxAge" class="form-label">Maximum Age</label>
+                                    <input type="number" class="form-control" id="maxAge" value="70" min="18" max="100">
+                                </div>
+                                
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="enableAutoMatch" checked>
+                                    <label class="form-check-label" for="enableAutoMatch">Enable Auto-Matching</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="card card-modern mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Notification Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="enableEmailNotifications" checked>
+                                    <label class="form-check-label" for="enableEmailNotifications">Enable Email Notifications</label>
+                                </div>
+                                
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="enablePushNotifications" checked>
+                                    <label class="form-check-label" for="enablePushNotifications">Enable Push Notifications</label>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="notificationSound" class="form-label">Notification Sound</label>
+                                    <select class="form-select" id="notificationSound">
+                                        <option value="default" selected>Default Sound</option>
+                                        <option value="chime">Chime</option>
+                                        <option value="beep">Beep</option>
+                                        <option value="none">No Sound</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="notificationSchedule" class="form-label">Notification Schedule</label>
+                                    <select class="form-select" id="notificationSchedule">
+                                        <option value="instant" selected>Instant</option>
+                                        <option value="hourly">Hourly</option>
+                                        <option value="daily">Daily</option>
+                                        <option value="weekly">Weekly</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card card-modern mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Security Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="requireEmailVerification" checked>
+                                    <label class="form-check-label" for="requireEmailVerification">Require Email Verification</label>
+                                </div>
+                                
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="requirePhoneVerification">
+                                    <label class="form-check-label" for="requirePhoneVerification">Require Phone Verification</label>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="sessionTimeout" class="form-label">Session Timeout (minutes)</label>
+                                    <input type="number" class="form-control" id="sessionTimeout" value="60" min="5" max="1440">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="maxLoginAttempts" class="form-label">Max Login Attempts</label>
+                                    <input type="number" class="form-control" id="maxLoginAttempts" value="5" min="1" max="10">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary btn-lg" onclick="saveGeneralSettings()">
+                        <i class="fas fa-save me-2"></i> Save General Settings
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Branding Settings -->
+            <div class="tab-pane fade" id="branding" role="tabpanel">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card card-modern mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Logo Upload</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="logoUpload" class="form-label">Logo Image</label>
+                                    <input type="file" class="form-control" id="logoUpload" accept="image/*">
+                                    <div class="form-text">Upload your logo (PNG, JPG, SVG). Recommended size: 200x50px</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Current Logo Preview</label>
+                                    <div class="border rounded p-3 text-center">
+                                        <img id="logoPreview" src="assets/logo.png" alt="Logo Preview" class="img-fluid mb-2" style="max-height: 50px;">
+                                        <p class="text-muted mb-0" id="logoFileName">No logo uploaded</p>
+                                    </div>
+                                </div>
+                                
+                                <button type="button" class="btn btn-primary w-100" onclick="uploadLogo()">
+                                    <i class="fas fa-upload me-2"></i> Upload Logo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="card card-modern mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Favicon Upload</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="faviconUpload" class="form-label">Favicon Image</label>
+                                    <input type="file" class="form-control" id="faviconUpload" accept="image/*,.ico">
+                                    <div class="form-text">Upload your favicon (ICO, PNG). Recommended size: 32x32px</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Current Favicon Preview</label>
+                                    <div class="border rounded p-3 text-center">
+                                        <img id="faviconPreview" src="assets/favicon.ico" alt="Favicon Preview" class="img-fluid mb-2" style="width: 32px; height: 32px;">
+                                        <p class="text-muted mb-0" id="faviconFileName">No favicon uploaded</p>
+                                    </div>
+                                </div>
+                                
+                                <button type="button" class="btn btn-primary w-100" onclick="uploadFavicon()">
+                                    <i class="fas fa-upload me-2"></i> Upload Favicon
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Note:</strong> Changes to logo and favicon will take effect immediately after upload.
+                            Please clear your browser cache if changes don't appear.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Terms of Service -->
+            <div class="tab-pane fade" id="terms" role="tabpanel">
+                <div class="card card-modern">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Terms of Service</h5>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="previewTerms()">
+                                <i class="fas fa-eye me-1"></i> Preview
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="resetTerms()">
+                                <i class="fas fa-redo me-1"></i> Restore Default
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="termsLanguage" class="form-label">Language</label>
+                            <select class="form-select" id="termsLanguage" onchange="loadTermsTemplate()">
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="termsTitle" class="form-label">Terms of Service Title</label>
+                            <input type="text" class="form-control" id="termsTitle" value="Dating App Terms of Service">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="termsContent" class="form-label">Terms of Service Content</label>
+                            <textarea class="form-control" id="termsContent" rows="20" style="font-family: monospace;">
+# Dating App Terms of Service
+
+## 1. Acceptance of Terms
+By using this app, you agree to be bound by these terms and conditions.
+
+## 2. Membership Requirements
+- You must be 18 years or older
+- You must provide accurate and truthful information
+- You cannot create more than one account
+
+## 3. Acceptable Behavior
+- Respect all users
+- Do not share inappropriate content
+- Maintain privacy
+- Report any unacceptable behavior
+
+## 4. Prohibited Content
+- Explicit sexual content
+- Hate speech or discrimination
+- Harassment or bullying
+- Violent content or threats
+
+## 5. Responsibility
+- You are responsible for all activities in your account
+- We reserve the right to suspend or delete any account
+- We may update these terms at any time
+
+## 6. Contact
+For inquiries, please contact: support@datingapp.com
+
+Last Updated: ${new Date().toLocaleDateString('en-US')}
+                            </textarea>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="button" class="btn btn-primary btn-lg" onclick="saveTerms()">
+                                <i class="fas fa-save me-2"></i> Save Terms of Service
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Privacy Policy -->
+            <div class="tab-pane fade" id="privacy" role="tabpanel">
+                <div class="card card-modern">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Privacy Policy</h5>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="previewPrivacy()">
+                                <i class="fas fa-eye me-1"></i> Preview
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="resetPrivacy()">
+                                <i class="fas fa-redo me-1"></i> Restore Default
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="privacyLanguage" class="form-label">Language</label>
+                            <select class="form-select" id="privacyLanguage" onchange="loadPrivacyTemplate()">
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="privacyTitle" class="form-label">Privacy Policy Title</label>
+                            <input type="text" class="form-control" id="privacyTitle" value="Dating App Privacy Policy">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="privacyContent" class="form-label">Privacy Policy Content</label>
+                            <textarea class="form-control" id="privacyContent" rows="20" style="font-family: monospace;">
+# Dating App Privacy Policy
+
+## 1. Information We Collect
+We collect the following information to improve your experience:
+- Personal information (name, age, gender)
+- Geographic location information
+- Photos and content you share
+- Device and browser information
+
+## 2. How We Use Your Information
+We use your information to:
+- Provide app services
+- Improve user experience
+- Communicate updates
+- Protect app security
+
+## 3. Information Sharing
+We do not sell or rent your personal information. We may share information with:
+- Essential service providers
+- Legal authorities when necessary
+- With your explicit consent
+
+## 4. Information Protection
+We use advanced security measures to protect your information:
+- Data encryption
+- Firewalls
+- Access monitoring
+
+## 5. Your Rights
+You have the right to:
+- Access your information
+- Correct inaccurate information
+- Delete your account
+- Object to data processing
+
+## 6. Policy Changes
+We may update this policy. We will notify you of any significant changes.
+
+## 7. Contact Us
+For privacy inquiries: privacy@datingapp.com
+
+Last Updated: ${new Date().toLocaleDateString('en-US')}
+                            </textarea>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="button" class="btn btn-primary btn-lg" onclick="savePrivacy()">
+                                <i class="fas fa-save me-2"></i> Save Privacy Policy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Admin Management -->
+            <div class="tab-pane fade" id="admins" role="tabpanel">
+                <div class="card card-modern">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Admin Management</h5>
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addAdminModal">
+                            <i class="fas fa-user-plus me-1"></i> Add Admin
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Admin</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Status</th>
+                                        <th>Last Activity</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminsTableBody">
+                                    <!-- Data will be populated via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- API Settings -->
+            <div class="tab-pane fade" id="api" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card card-modern mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">General API Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="apiBaseUrl" class="form-label">API Base URL</label>
+                                    <input type="text" class="form-control" id="apiBaseUrl" value="https://api.datingapp.com/v1">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="apiRateLimit" class="form-label">Request Limit (per minute)</label>
+                                    <input type="number" class="form-control" id="apiRateLimit" value="100" min="10" max="1000">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="apiTimeout" class="form-label">Request Timeout (seconds)</label>
+                                    <input type="number" class="form-control" id="apiTimeout" value="30" min="5" max="120">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card card-modern mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">API Keys</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Public API Key</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="publicApiKey" value="pk_test_123456789" readonly>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="toggleApiKey('publicApiKey')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('publicApiKey')">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Secret API Key</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="secretApiKey" value="sk_test_987654321" readonly>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="toggleApiKey('secretApiKey')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('secretApiKey')">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    Do not share secret keys with anyone. They can lead to account compromise.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card card-modern mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">API Logs</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="apiLogLevel" class="form-label">Log Level</label>
+                                    <select class="form-select" id="apiLogLevel">
+                                        <option value="error">Errors Only</option>
+                                        <option value="warn">Warnings & Errors</option>
+                                        <option value="info" selected>Info, Warnings & Errors</option>
+                                        <option value="debug">Full Details</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="enableApiLogging" checked>
+                                    <label class="form-check-label" for="enableApiLogging">Enable API Request Logging</label>
+                                </div>
+                                
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="logSensitiveData">
+                                    <label class="form-check-label" for="logSensitiveData">Log Sensitive Data</label>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="logRetentionDays" class="form-label">Log Retention Period (days)</label>
+                                    <input type="number" class="form-control" id="logRetentionDays" value="30" min="1" max="365">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card card-modern">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Connection Test</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="testEndpoint" class="form-label">Test Endpoint</label>
+                                    <select class="form-select" id="testEndpoint">
+                                        <option value="/health">Server Status</option>
+                                        <option value="/users">Users</option>
+                                        <option value="/auth/test">Authentication</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="button" class="btn btn-outline-primary w-100 mb-3" onclick="testApiConnection()">
+                                    <i class="fas fa-plug me-1"></i> Test Connection
+                                </button>
+                                
+                                <div class="alert alert-info d-none" id="testResult">
+                                    <!-- Test results will be displayed here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <button type="button" class="btn btn-primary btn-lg" onclick="saveApiSettings()">
+                        <i class="fas fa-save me-2"></i> Save API Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Admin Modal -->
+    <div class="modal fade" id="addAdminModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Admin</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="newAdminName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="newAdminName" placeholder="Enter full name">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="newAdminEmail" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="newAdminEmail" placeholder="admin@example.com">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="newAdminRole" class="form-label">Role</label>
+                        <select class="form-select" id="newAdminRole">
+                            <option value="admin">Full Admin</option>
+                            <option value="moderator">Moderator</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="newAdminPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="newAdminPassword" placeholder="Strong password">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Re-enter password">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="addNewAdmin()">Add Admin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/xml/xml.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/branding.js"></script>
+</body>
+</html>

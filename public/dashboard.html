@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Dating App Admin Panel</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="icon" type="image/x-icon" id="favicon" href="assets/favicon.ico">
+</head>
+<body class="light-mode">
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="/admin/dashboard.html">
+                <img src="assets/logo.png" alt="Logo" id="navbar-logo" height="30" class="me-2 d-none">
+                <i class="fas fa-heart me-2" id="logo-icon"></i>
+                <span>Admin Panel</span>
+            </a>
+            
+            <div class="d-flex align-items-center">
+                <!-- Dark Mode Toggle -->
+                <div class="form-check form-switch me-3">
+                    <input class="form-check-input" type="checkbox" id="darkModeToggle">
+                    <label class="form-check-label text-white" for="darkModeToggle">
+                        <i class="fas fa-moon"></i>
+                    </label>
+                </div>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin/dashboard.html">
+                            <i class="fas fa-home me-1"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/users.html">
+                            <i class="fas fa-users me-1"></i> Users
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/photos.html">
+                            <i class="fas fa-images me-1"></i> Photos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/reports.html">
+                            <i class="fas fa-flag me-1"></i> Reports
+                            <span class="badge bg-danger ms-1" id="reportsBadge">5</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/conversations.html">
+                            <i class="fas fa-comments me-1"></i> Conversations
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/settings.html">
+                            <i class="fas fa-cog me-1"></i> Settings
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="navbar-nav">
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                            <div class="avatar me-2">
+                                <i class="fas fa-user-circle fa-2x"></i>
+                            </div>
+                            <span id="userName">System Admin</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="settings.html#admins-tab"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <div class="sidebar-header text-center mb-4">
+                        <h5 class="text-primary">Quick Stats</h5>
+                    </div>
+                    
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2">
+                            <div class="card card-modern stat-card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="card-subtitle mb-1">Total Users</h6>
+                                            <h4 class="card-title mb-0" id="totalUsers">1,245</h4>
+                                        </div>
+                                        <i class="fas fa-users fa-2x text-primary"></i>
+                                    </div>
+                                    <small class="text-success"><i class="fas fa-arrow-up me-1"></i> 12% this month</small>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="nav-item mb-2">
+                            <div class="card card-modern stat-card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="card-subtitle mb-1">Active Today</h6>
+                                            <h4 class="card-title mb-0" id="activeUsers">324</h4>
+                                        </div>
+                                        <i class="fas fa-user-check fa-2x text-success"></i>
+                                    </div>
+                                    <small class="text-success"><i class="fas fa-arrow-up me-1"></i> 8% from yesterday</small>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="nav-item mb-2">
+                            <div class="card card-modern stat-card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="card-subtitle mb-1">New Reports</h6>
+                                            <h4 class="card-title mb-0" id="newReports">18</h4>
+                                        </div>
+                                        <i class="fas fa-flag fa-2x text-danger"></i>
+                                    </div>
+                                    <small class="text-danger"><i class="fas fa-arrow-up me-1"></i> 5% from last week</small>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <div class="card card-modern stat-card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="card-subtitle mb-1">Pending Photos</h6>
+                                            <h4 class="card-title mb-0" id="pendingPhotos">47</h4>
+                                        </div>
+                                        <i class="fas fa-images fa-2x text-warning"></i>
+                                    </div>
+                                    <small class="text-success"><i class="fas fa-arrow-down me-1"></i> 15% this week</small>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-4">
+                        <h6 class="sidebar-heading px-3 mb-2">Quick Links</h6>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="users.html?filter=new">
+                                    <i class="fas fa-user-plus me-2"></i> New Users
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="reports.html?status=pending">
+                                    <i class="fas fa-clock me-2"></i> Pending Reports
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="photos.html?status=pending">
+                                    <i class="fas fa-image me-2"></i> Photos to Review
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Today</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">This Week</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">This Month</button>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-download me-1"></i> Export Report
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Statistics Cards -->
+                <div class="row mb-4 equal-height">
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="card card-modern bg-grad-blue text-white stat-card-modern">
+                            <div class="icon-box">
+                                <i class="fas fa-users fa-2x"></i>
+                            </div>
+                            <p class="card-label">Total Users</p>
+                            <h2 class="card-value" id="dashboardTotalUsers">1,245</h2>
+                            <a href="/admin/users.html" class="stretched-link"></a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="card card-modern bg-grad-green text-white stat-card-modern">
+                            <div class="icon-box">
+                                <i class="fas fa-user-check fa-2x"></i>
+                            </div>
+                            <p class="card-label">Active Users</p>
+                            <h2 class="card-value" id="dashboardActiveUsers">892</h2>
+                            <a href="users.html?filter=active" class="stretched-link"></a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="card card-modern bg-grad-red text-white stat-card-modern">
+                            <div class="icon-box">
+                                <i class="fas fa-flag fa-2x"></i>
+                            </div>
+                            <p class="card-label">Pending Reports</p>
+                            <h2 class="card-value" id="dashboardPendingReports">18</h2>
+                            <a href="reports.html?status=pending" class="stretched-link"></a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="card card-modern bg-grad-pink text-white stat-card-modern">
+                            <div class="icon-box">
+                                <i class="fas fa-heart fa-2x"></i>
+                            </div>
+                            <p class="card-label">Today's Matches</p>
+                            <h2 class="card-value" id="dashboardTodayMatches">56</h2>
+                            <a href="reports.html?type=matches" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts and Statistics -->
+                <div class="row">
+                    <div class="col-lg-8 mb-4">
+                        <div class="card card-modern">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">User Growth (Last 7 Days)</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="usersChart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 mb-4">
+                        <div class="card card-modern">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Gender Distribution</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="genderChart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activities -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-modern">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="card-title mb-0">Recent Activities</h5>
+                                <a href="/admin/reports.html" class="btn btn-sm btn-outline-primary">View All</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>User</th>
+                                                <th>Activity</th>
+                                                <th>Time</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="recentActivities">
+                                            <!-- Will be populated via JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/dark-mode.js"></script>
+</body>
+</html>
