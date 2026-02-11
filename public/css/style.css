@@ -1,0 +1,1513 @@
+/* style.css - Main Application Styles */
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --accent-color: #FF5A5F;
+    --success-color: #10b981;
+    --danger-color: #FF5252;
+    --warning-color: #FFB300;
+    --info-color: #3b82f6;
+    --dark-color: #1f2937;
+    --light-color: #f0f2f5;
+    --verified-color: #4facfe;
+    --live-color: #ff0844;
+    
+    /* Light Mode Variables */
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-color: #212529;
+    --border-color: #dee2e6;
+    --sidebar-bg: #ffffff;
+    --table-bg: #ffffff;
+    --table-hover-bg: #f8f9fa;
+}
+
+/* Dark Mode Variables */
+.dark-mode {
+    --primary-color: #8a63d2;
+    --secondary-color: #4d8dfc;
+    --accent-color: #ff7b7f;
+    --success-color: #10b981;
+    --danger-color: #ff6b6b;
+    --warning-color: #f59e0b;
+    --info-color: #3b82f6;
+    --dark-color: #374151;
+    --light-color: #1f2937;
+    --verified-color: #60a5fa;
+    --live-color: #ff416c;
+    
+    --bg-color: #0f172a; /* لون أغمق وأكثر احترافية */
+    --card-bg: #1e293b;
+    --text-color: #f1f5f9;
+    --border-color: #334155;
+    --sidebar-bg: #1e293b;
+    --table-bg: #1e293b;
+    --table-hover-bg: #334155;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    padding-top: 56px;
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navigation Bar */
+.navbar {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%) !important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar */
+#sidebar {
+    background-color: var(--sidebar-bg) !important;
+    border-right: 1px solid var(--border-color);
+    min-height: calc(100vh - 56px);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.sidebar .nav-link {
+    color: var(--text-color);
+    padding: 12px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+    background: rgba(106, 17, 203, 0.08);
+    color: var(--primary-color);
+}
+
+.sidebar .nav-link.active {
+    background: rgba(106, 17, 203, 0.12);
+    color: var(--primary-color);
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Modern Card Design - FIXED HEIGHT */
+.card-modern {
+    border: none;
+    border-radius: 16px;
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    height: 100%; /* Ensure cards take full height of parent */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-modern:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.card-modern .card-header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.25rem 1.5rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.card-modern .card-body {
+    padding: 1.5rem;
+    flex: 1; /* Take remaining space */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-modern .card-title {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.card-modern .card-subtitle {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-weight: 500;
+}
+
+/* Stat Cards */
+.stat-card {
+    border: none;
+    border-radius: 12px;
+    background: var(--card-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    height: 100%;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card .card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-card i {
+    opacity: 0.9;
+}
+
+.stat-card .card-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.stat-card .card-subtitle {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Modern Stat Cards with Gradients - FIXED HEIGHT */
+.stat-card-modern {
+    padding: 1.5rem;
+    position: relative;
+    color: white;
+    border: none !important;
+    min-height: 180px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.stat-card-modern .icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+}
+
+.stat-card-modern .card-value {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    line-height: 1;
+}
+
+.stat-card-modern .card-label {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    flex-shrink: 0;
+}
+
+/* Gradient Backgrounds */
+.bg-grad-blue { 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.bg-grad-green { 
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+.bg-grad-red { 
+    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+}
+.bg-grad-pink { 
+    background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+}
+
+/* New Gradient Backgrounds for Dark Mode Enhancement */
+.bg-grad-yellow { 
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+.bg-grad-red-new { 
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+.bg-grad-green-new { 
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+.bg-grad-blue-new { 
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+/* Tables */
+.table {
+    color: var(--text-color);
+    background-color: var(--table-bg);
+    border-color: var(--border-color);
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--table-hover-bg);
+    transition: background-color 0.2s;
+}
+
+.table th {
+    border-color: var(--border-color);
+    font-weight: 600;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.table td {
+    border-color: var(--border-color);
+    vertical-align: middle;
+}
+
+/* Forms */
+.form-control, .form-select {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--card-bg);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0 0 0 0.25rem rgba(106, 17, 203, 0.25);
+}
+
+.form-label {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-text {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Badges */
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+    border-radius: 20px;
+}
+
+/* Dark Mode Toggle */
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.form-check-label {
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* Responsive Design - FIXED for equal card heights */
+@media (max-width: 768px) {
+    .card-modern {
+        border-radius: 12px;
+        margin-bottom: 1rem;
+    }
+    
+    .stat-card-modern {
+        min-height: 160px;
+        padding: 1.25rem;
+    }
+    
+    .stat-card-modern .card-value {
+        font-size: 1.75rem;
+    }
+    
+    .stat-card-modern .icon-box {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 0.75rem;
+    }
+    
+    .stat-card-modern .icon-box i {
+        font-size: 1.5rem;
+    }
+    
+    /* Mobile: 2 cards per row with equal height */
+    .row .col-6 {
+        display: flex;
+        margin-bottom: 16px;
+    }
+    
+    .row .col-6 .card-modern {
+        flex: 1;
+    }
+}
+
+@media (max-width: 576px) {
+    .stat-card-modern {
+        min-height: 140px;
+        padding: 1rem;
+    }
+    
+    .stat-card-modern .card-value {
+        font-size: 1.5rem;
+    }
+    
+    .stat-card-modern .icon-box {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stat-card-modern .icon-box i {
+        font-size: 1.25rem;
+    }
+}
+
+/* Desktop: 4 cards per row with equal height */
+@media (min-width: 768px) {
+    .row .col-md-3 {
+        display: flex;
+        margin-bottom: 24px;
+    }
+    
+    .row .col-md-3 .card-modern {
+        flex: 1;
+    }
+}
+
+/* Desktop large: ensure cards have same height in same row */
+@media (min-width: 992px) {
+    .row.equal-height {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .row.equal-height > [class*='col-'] {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .row.equal-height > [class*='col-'] .card-modern {
+        flex: 1 1 auto;
+        height: 100%;
+    }
+}
+
+/* Borders and Shadows */
+.border {
+    border-color: var(--border-color) !important;
+}
+
+.border-bottom {
+    border-bottom-color: var(--border-color) !important;
+}
+
+.border-top {
+    border-top-color: var(--border-color) !important;
+}
+
+/* Modal */
+.modal-content {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.modal-header, .modal-footer {
+    border-color: var(--border-color);
+}
+
+/* Alerts */
+.alert {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+/* Pagination */
+.page-link {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.page-link:hover {
+    background-color: var(--table-hover-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Avatar */
+.avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Input Group */
+.input-group-text {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+/* Dropdown */
+.dropdown-menu {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.dropdown-item {
+    color: var(--text-color);
+}
+
+.dropdown-item:hover {
+    background-color: var(--table-hover-bg);
+    color: var(--text-color);
+}
+
+/* Nav Tabs */
+.nav-tabs {
+    border-bottom-color: var(--border-color);
+}
+
+.nav-tabs .nav-link {
+    color: var(--text-color);
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: var(--border-color);
+    color: var(--primary-color);
+}
+
+.nav-tabs .nav-link.active {
+    background-color: var(--card-bg);
+    border-color: var(--border-color) var(--border-color) var(--card-bg);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Progress Bars */
+.progress {
+    background-color: var(--border-color);
+}
+
+.progress-bar {
+    background-color: var(--primary-color);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Animation for dark mode transition */
+* {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure all cards in same row have equal height */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Fix for dashboard cards - equal height */
+.dashboard-stats .row {
+    align-items: stretch;
+}
+
+/* Specific fix for stat cards in sidebar */
+#sidebar .stat-card {
+    height: auto;
+    min-height: 120px;
+}
+
+/* =================== */
+/* Dark Mode Toggle Styles */
+/* =================== */
+
+.dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.dark-mode-toggle .form-check {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.dark-mode-toggle .form-check-input {
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.dark-mode-toggle .form-check-label {
+    color: #f8f9fa;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.dark-mode-toggle .form-check-label i {
+    font-size: 18px;
+}
+
+/* Dark mode specific styles */
+.dark-mode .dark-mode-toggle .form-check-label {
+    color: #f8f9fa;
+}
+
+/* Animation for the moon/sun icon */
+.dark-mode-toggle .form-check-input:checked + .form-check-label i {
+    color: #FFD700; /* Gold color for sun */
+}
+
+.dark-mode-toggle .form-check-input:not(:checked) + .form-check-label i {
+    color: #B0B0B0; /* Gray color for moon */
+}
+
+/* =========================================== */
+/* DARK MODE ENHANCEMENTS - تحسينات الوضع الليلي */
+/* =========================================== */
+
+/* تحسين متغيرات الوضع الليلي */
+.dark-mode {
+    --primary-color: #8a63d2;
+    --secondary-color: #4d8dfc;
+    --accent-color: #ff7b7f;
+    --success-color: #10b981;
+    --danger-color: #ff6b6b;
+    --warning-color: #f59e0b;
+    --info-color: #3b82f6;
+    
+    --bg-color: #0f172a; /* لون أغمق وأكثر احترافية */
+    --card-bg: #1e293b;
+    --text-color: #f1f5f9;
+    --border-color: #334155;
+    --sidebar-bg: #1e293b;
+    --table-bg: #1e293b;
+    --table-hover-bg: #334155;
+}
+
+/* إصلاح بطاقات الإحصائيات للوضع الليلي */
+.dark-mode .card.bg-warning {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.15) 100%) !important;
+    border: 1px solid rgba(245, 158, 11, 0.3) !important;
+    color: #fef3c7 !important;
+}
+
+.dark-mode .card.bg-danger {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(220, 38, 38, 0.15) 100%) !important;
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+    color: #fecaca !important;
+}
+
+.dark-mode .card.bg-success {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.15) 100%) !important;
+    border: 1px solid rgba(16, 185, 129, 0.3) !important;
+    color: #a7f3d0 !important;
+}
+
+.dark-mode .card.bg-info {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.15) 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+    color: #bfdbfe !important;
+}
+
+/* تحسين النصوص داخل البطاقات الملونة */
+.dark-mode .card.bg-warning .card-title,
+.dark-mode .card.bg-danger .card-title,
+.dark-mode .card.bg-success .card-title,
+.dark-mode .card.bg-info .card-title {
+    color: inherit !important;
+}
+
+.dark-mode .card.bg-warning .card-subtitle,
+.dark-mode .card.bg-danger .card-subtitle,
+.dark-mode .card.bg-success .card-subtitle,
+.dark-mode .card.bg-info .card-subtitle {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* تحسين الأيقونات في البطاقات الملونة */
+.dark-mode .card.bg-warning i,
+.dark-mode .card.bg-danger i,
+.dark-mode .card.bg-success i,
+.dark-mode .card.bg-info i {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* تحسين الجداول في الوضع الليلي */
+.dark-mode .table {
+    --bs-table-bg: transparent;
+    --bs-table-color: #e2e8f0;
+    --bs-table-border-color: #475569;
+}
+
+.dark-mode .table th {
+    background-color: #1e293b;
+    color: #94a3b8;
+    font-weight: 600;
+    border-bottom: 2px solid #475569;
+}
+
+.dark-mode .table td {
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+.dark-mode .table-hover tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* تحسين حقول الإدخال والاختيار */
+.dark-mode .form-control,
+.dark-mode .form-select {
+    background-color: #1e293b;
+    border: 1px solid #475569;
+    color: #e2e8f0;
+}
+
+.dark-mode .form-control:focus,
+.dark-mode .form-select:focus {
+    background-color: #1e293b;
+    border-color: #8a63d2;
+    box-shadow: 0 0 0 0.25rem rgba(138, 99, 210, 0.25);
+    color: #e2e8f0;
+}
+
+.dark-mode .input-group-text {
+    background-color: #334155;
+    border-color: #475569;
+    color: #cbd5e1;
+}
+
+/* تحسين checkboxes و radios */
+.dark-mode .form-check-input {
+    background-color: #334155;
+    border-color: #64748b;
+}
+
+.dark-mode .form-check-input:checked {
+    background-color: #8a63d2;
+    border-color: #8a63d2;
+}
+
+/* تحسين الباجات */
+.dark-mode .badge.bg-warning {
+    background-color: #d97706 !important;
+    color: #1c1917;
+}
+
+.dark-mode .badge.bg-danger {
+    background-color: #dc2626 !important;
+}
+
+.dark-mode .badge.bg-success {
+    background-color: #059669 !important;
+}
+
+.dark-mode .badge.bg-info {
+    background-color: #2563eb !important;
+}
+
+/* تحسين الباجونيشن */
+.dark-mode .page-link {
+    background-color: #1e293b;
+    border-color: #475569;
+    color: #cbd5e1;
+}
+
+.dark-mode .page-link:hover {
+    background-color: #334155;
+    border-color: #64748b;
+    color: #e2e8f0;
+}
+
+.dark-mode .page-item.active .page-link {
+    background-color: #8a63d2;
+    border-color: #8a63d2;
+    color: white;
+}
+
+/* تحسين المودالات */
+.dark-mode .modal-content {
+    background-color: #1e293b;
+    border-color: #475569;
+}
+
+.dark-mode .modal-header,
+.dark-mode .modal-footer {
+    border-color: #475569;
+}
+
+/* تحسين dropdowns */
+.dark-mode .dropdown-menu {
+    background-color: #1e293b;
+    border-color: #475569;
+}
+
+.dark-mode .dropdown-item {
+    color: #cbd5e1;
+}
+
+.dark-mode .dropdown-item:hover {
+    background-color: #334155;
+    color: #e2e8f0;
+}
+
+/* تحسين البطاقات المخصصة */
+.dark-mode .card-modern {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.dark-mode .card-header {
+    background-color: rgba(30, 41, 59, 0.8);
+    border-color: var(--border-color);
+}
+
+/* تحسين شريط التمرير */
+.dark-mode ::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+    background: #475569;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* تحسين تباين النصوص */
+.dark-mode .text-muted {
+    color: #94a3b8 !important;
+}
+
+.dark-mode .text-secondary {
+    color: #cbd5e1 !important;
+}
+
+/* تحسين الأزرار */
+.dark-mode .btn-outline-secondary {
+    border-color: #64748b;
+    color: #94a3b8;
+}
+
+.dark-mode .btn-outline-secondary:hover {
+    background-color: #475569;
+    border-color: #94a3b8;
+    color: #e2e8f0;
+}
+
+/* =========================================== */
+/* USER ICONS DARK MODE FIX - إصلاح أيقونات المستخدم */
+/* =========================================== */
+
+/* تحسين أيقونات المستخدم العامة في الوضع الليلي */
+.dark-mode .avatar i.fa-user-circle {
+    color: #1e293b !important; /* لون داكن جداً (أسود تقريباً) */
+    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%) !important;
+    border-radius: 50% !important;
+    padding: 8px !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    border: 2px solid #475569 !important;
+}
+
+/* تحسين أيقونات المستخدم في صفحة المحادثات بشكل خاص */
+.dark-mode .conversations-page .fa-user-circle {
+    color: #0f172a !important; /* أسود داكن */
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+    border-radius: 50% !important;
+    padding: 10px !important;
+    font-size: 1.8rem !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25) !important;
+    border: 2px solid #64748b !important;
+}
+
+/* تحسين أيقونات المستخدم في قسم Select a Conversation */
+.dark-mode .conversations-page .list-group-item .fa-user-circle {
+    color: #000000 !important; /* أسود صريح */
+    background: #ffffff !important; /* خلفية بيضاء نقية */
+    border-radius: 50% !important;
+    padding: 8px !important;
+    font-size: 1.5rem !important;
+    border: 2px solid #94a3b8 !important;
+}
+
+/* تحسين أيقونات المستخدم في الصفحات الأخرى */
+.dark-mode .navbar .fa-user-circle {
+    color: #1e293b !important;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+    border-radius: 50% !important;
+    padding: 5px !important;
+}
+
+/* تحسين أيقونات المستخدم في البطاقات */
+.dark-mode .card .fa-user-circle {
+    color: #0f172a !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%) !important;
+    border-radius: 50% !important;
+    padding: 6px !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
+/* تحسين حجم وتنسيق أيقونات المستخدم الكبيرة */
+.dark-mode .fa-2x.fa-user-circle {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 2.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* تحسين أيقونات المستخدم في الوضع النهاري (للحفاظ على التناسق) */
+.light-mode .fa-user-circle {
+    color: #4b5563 !important; /* رمادي داكن في الوضع النهاري */
+    background: rgba(0, 0, 0, 0.05) !important;
+    border-radius: 50% !important;
+    padding: 5px !important;
+}
+
+/* تحسين hover effect لأيقونات المستخدم */
+.dark-mode .fa-user-circle:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* =========================================== */
+/* PHOTOS & CONVERSATIONS PAGES DARK MODE FIX */
+/* =========================================== */
+
+/* تحسين صفحة Photos - إصلاح البطاقات الإحصائية */
+.dark-mode .photos-stats .card.bg-warning,
+.dark-mode .photos-stats .card.bg-success,
+.dark-mode .photos-stats .card.bg-danger,
+.dark-mode .photos-stats .card.bg-info {
+    background: linear-gradient(135deg, var(--card-bg) 0%, var(--card-bg) 100%) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+
+.dark-mode .photos-stats .card.bg-warning {
+    border-left: 4px solid #f59e0b !important;
+}
+
+.dark-mode .photos-stats .card.bg-success {
+    border-left: 4px solid #10b981 !important;
+}
+
+.dark-mode .photos-stats .card.bg-danger {
+    border-left: 4px solid #ef4444 !important;
+}
+
+.dark-mode .photos-stats .card.bg-info {
+    border-left: 4px solid #3b82f6 !important;
+}
+
+/* تحسين صفحة Photos - أرقام البطاقات */
+.dark-mode .photos-stats .card .card-title {
+    color: var(--text-color) !important;
+    font-weight: 700;
+}
+
+.dark-mode .photos-stats .card .card-subtitle {
+    color: var(--text-color) !important;
+    opacity: 0.8;
+}
+
+/* تحسين صفحة Photos - الأيقونات */
+.dark-mode .photos-stats .card i {
+    color: var(--text-color) !important;
+    opacity: 0.7;
+}
+
+/* تحسين صفحة Photos - التحكم في التصفية */
+.dark-mode .photos-filter .btn-outline-secondary {
+    border-color: #64748b;
+    color: #94a3b8;
+}
+
+.dark-mode .photos-filter .btn-outline-secondary:hover,
+.dark-mode .photos-filter .btn-outline-secondary.active {
+    background-color: #475569;
+    border-color: #94a3b8;
+    color: #e2e8f0;
+}
+
+/* تحسين صفحة Photos - رسالة التحميل */
+.dark-mode .text-muted {
+    color: #94a3b8 !important;
+}
+
+/* تحسين صفحة Photos - العناوين */
+.dark-mode .photos-page h1,
+.dark-mode .photos-page h2,
+.dark-mode .photos-page h3,
+.dark-mode .photos-page h4,
+.dark-mode .photos-page h5,
+.dark-mode .photos-page h6 {
+    color: var(--text-color);
+}
+
+/* =========================================== */
+/* CONVERSATIONS PAGE DARK MODE FIX */
+/* =========================================== */
+
+/* تحسين صفحة Conversations - البطاقات */
+.dark-mode .conversations-page .card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.dark-mode .conversations-page .card-header {
+    background-color: rgba(30, 41, 59, 0.8);
+    border-bottom-color: var(--border-color);
+    color: var(--text-color);
+}
+
+/* تحسين صفحة Conversations - القوائم */
+.dark-mode .conversations-page .list-group-item {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.dark-mode .conversations-page .list-group-item:hover {
+    background-color: var(--table-hover-bg);
+}
+
+/* تحسين صفحة Conversations - النصوص */
+.dark-mode .conversations-page .text-secondary {
+    color: #94a3b8 !important;
+}
+
+/* تحسين صفحة Conversations - الأزرار */
+.dark-mode .conversations-page .btn-outline-primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.dark-mode .conversations-page .btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* تحسين صفحة Conversations - رسالة "Select a Conversation" */
+.dark-mode .conversations-page .text-center {
+    color: var(--text-color);
+}
+
+.dark-mode .conversations-page .text-center .text-muted {
+    color: #94a3b8 !important;
+}
+
+/* =========================================== */
+/* GENERAL FIXES FOR ALL PAGES */
+/* =========================================== */
+
+/* تحسين جميع البطاقات التي تستخدم ألوان Bootstrap الافتراضية */
+.dark-mode .card.bg-light {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+.dark-mode .card.bg-dark {
+    background-color: #1e293b !important;
+    color: #f1f5f9 !important;
+    border-color: #334155 !important;
+}
+
+/* تحسين جميع النصوص الثانوية */
+.dark-mode .text-body-secondary {
+    color: #94a3b8 !important;
+}
+
+/* تحسين جميع أزرار التصفية */
+.dark-mode .btn-group .btn-outline-secondary {
+    border-color: #64748b;
+    color: #94a3b8;
+}
+
+.dark-mode .btn-group .btn-outline-secondary:hover,
+.dark-mode .btn-group .btn-outline-secondary.active {
+    background-color: #475569;
+    border-color: #94a3b8;
+    color: #e2e8f0;
+}
+
+/* تحسين رسائل التحميل في جميع الصفحات */
+.dark-mode .loading-placeholder {
+    color: #94a3b8 !important;
+}
+
+.dark-mode .placeholder {
+    background-color: #334155 !important;
+}
+
+/* تحسين البطاقات التي ليس لها class محدد */
+.dark-mode div:not(.navbar):not(.card-modern):not(.stat-card-modern) > .card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.dark-mode div:not(.navbar):not(.card-modern):not(.stat-card-modern) > .card .card-title {
+    color: var(--text-color);
+}
+
+.dark-mode div:not(.navbar):not(.card-modern):not(.stat-card-modern) > .card .card-text {
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+/* =========================================== */
+/* DARK MODE TRANSITION ENHANCEMENTS */
+/* =========================================== */
+
+/* تحسين انتقالات الوضع الليلي */
+body, 
+body *:not(.fas, .fa, i):not(.navbar, .navbar *):not(.card-modern, .card-modern *) {
+    transition: background-color 0.3s ease, 
+                border-color 0.3s ease, 
+                color 0.3s ease,
+                box-shadow 0.3s ease,
+                opacity 0.3s ease;
+}
+
+/* استثناء بعض العناصر من الانتقال السريع */
+.navbar,
+.card-modern,
+.stat-card-modern {
+    transition: all 0.4s ease !important;
+}
+
+/* تحسين انتقال الأزرار */
+.btn {
+    transition: all 0.25s ease !important;
+}
+
+/* حل وميض الصفحة عند تغيير الوضع */
+body.dark-mode,
+body.light-mode {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0.95; }
+    to { opacity: 1; }
+}
+
+/* تحسين ظهور العناصر */
+.fade-in {
+    animation: fadeInElement 0.5s ease-out;
+}
+
+@keyframes fadeInElement {
+    from { 
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* =========================================== */
+/* NIGHT MODE IMPROVEMENTS (Icons & Navbar) */
+/* =========================================== */
+
+/* تحسين أيقونات المستخدم في الوضع الليلي */
+.dark-mode .fa-user-circle,
+.dark-mode .fa-user,
+.dark-mode .user-avatar i,
+.dark-mode .conversations-page .fa-user-circle,
+.dark-mode .avatar i.fa-user-circle {
+    background-color: #f1f5f9 !important; /* خلفية رمادي فاتح جداً */
+    color: #1e293b !important;            /* لون الشخص داكن جداً */
+    border-radius: 50%;                  /* شكل دائري */
+    padding: 2px;                        /* مساحة داخلية */
+    border: 2px solid #ffffff;           /* إطار أبيض للوضوح */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    width: 40px;
+    height: 40px;
+}
+
+/* التأكد من تناسق الحجم للأيقونات الصغيرة */
+.dark-mode .user-avatar {
+    background-color: #f1f5f9 !important;
+    border: 1px solid #ffffff;
+}
+
+.dark-mode .user-avatar i {
+    color: #1e293b !important;
+}
+
+/* تحسين الرسائل في صفحة المحادثات للوضع الليلي */
+.dark-mode .message-received {
+    background-color: #334155 !important;
+    color: #f1f5f9 !important;
+    border: 1px solid #475569;
+}
+
+.dark-mode .message-sent {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .message-container {
+    background-color: #0f172a !important;
+    border-color: #334155 !important;
+}
+
+/* تحسين شريط التنقل في الوضع الليلي */
+.dark-mode .navbar,
+.dark-mode nav.navbar.bg-dark {
+    background: #1e293b !important; /* لون داكن احترافي */
+    border-bottom: 1px solid #334155 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+.dark-mode .navbar-brand,
+.dark-mode .navbar-brand span,
+.dark-mode .navbar-brand i {
+    color: #ffffff !important;
+}
+
+.dark-mode .navbar-nav .nav-link {
+    color: #cbd5e1 !important;
+    padding: 0.5rem 1rem;
+    margin: 0 2px;
+    transition: all 0.2s;
+}
+
+.dark-mode .navbar-nav .nav-link:hover {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.dark-mode .navbar-nav .nav-link.active {
+    color: #ffffff !important;
+    background-color: rgba(37, 99, 235, 0.2);
+    border-radius: 8px;
+}
+
+/* تحسين القائمة المنسدلة في شريط التنقل للوضع الليلي */
+.dark-mode .dropdown-menu {
+    background-color: #1e293b !important;
+    border: 1px solid #334155 !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+
+.dark-mode .dropdown-item {
+    color: #cbd5e1 !important;
+    padding: 0.6rem 1.2rem !important;
+}
+
+.dark-mode .dropdown-item:hover {
+    background-color: #334155 !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .dropdown-divider {
+    border-top: 1px solid #334155 !important;
+}
+
+/* تحسين زر القائمة (Toggle) في الوضع الليلي */
+.dark-mode .navbar-toggler {
+    border-color: #475569 !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark-mode .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* تحسين عناصر التحكم في شريط التنقل */
+.dark-mode .navbar .form-check-label {
+    color: #cbd5e1 !important;
+}
+
+/* تحسين السايدبار في الوضع الليلي */
+.dark-mode #sidebar {
+    background-color: #1e293b !important;
+    border-right: 1px solid #334155 !important;
+}
+
+.dark-mode .sidebar .nav-link {
+    color: #cbd5e1 !important;
+}
+
+.dark-mode .sidebar .nav-link:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .sidebar .nav-link.active {
+    background: rgba(37, 99, 235, 0.15) !important;
+    color: #3b82f6 !important;
+    border-left: 4px solid #3b82f6 !important;
+}
+
+/* تحسين التبويبات (Tabs) في الوضع الليلي */
+.dark-mode .nav-tabs {
+    border-bottom-color: #334155 !important;
+}
+
+.dark-mode .nav-tabs .nav-link {
+    color: #94a3b8 !important;
+}
+
+.dark-mode .nav-tabs .nav-link:hover {
+    border-color: #334155 #334155 #334155 !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .nav-tabs .nav-link.active {
+    background-color: #1e293b !important;
+    border-color: #334155 #334155 #1e293b !important;
+    color: #3b82f6 !important;
+}
+
+/* تحسين الجداول في الوضع الليلي */
+.dark-mode .table {
+    color: #cbd5e1 !important;
+}
+
+.dark-mode .table thead th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    border-bottom-color: #334155 !important;
+}
+
+.dark-mode .table td {
+    border-bottom-color: #334155 !important;
+}
+
+/* تحسين المودال (Modal) في الوضع الليلي */
+.dark-mode .modal-content {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f1f5f9 !important;
+}
+
+.dark-mode .modal-header,
+.dark-mode .modal-footer {
+    border-color: #334155 !important;
+}
+
+.dark-mode .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* (تكرار تمت إزالته ودمجه في القسم أعلاه) */
+
+/* =========================================== */
+/* REPORT DETAILS MODAL DARK MODE FIX */
+/* =========================================== */
+
+/* تحسين صناديق التنبيه المخصصة في تفاصيل البلاغات */
+.dark-mode .alert-custom-details {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #e2e8f0 !important;
+}
+
+.dark-mode .alert-custom-info {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+    border: 1px solid rgba(59, 130, 246, 0.2) !important;
+    color: #bfdbfe !important;
+}
+
+/* تحسين العناوين داخل المودال */
+.dark-mode .modal-content h6 {
+    color: #94a3b8 !important;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.dark-mode .modal-content strong {
+    color: #cbd5e1 !important;
+}
+
+/* تحسين البطاقات داخل المودال */
+.dark-mode .modal-content .card {
+    background-color: rgba(15, 23, 42, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* =========================================== */
+/* REPORTS TABLE DARK MODE FIX - إصلاح جدول البلاغات */
+/* =========================================== */
+
+/* إلغاء اللون الأصفر الفاتح لصفوف البلاغات المعلقة في الوضع الليلي */
+.dark-mode .table-warning,
+.dark-mode .table-warning > td,
+.dark-mode .table-warning > th {
+    background-color: rgba(245, 158, 11, 0.1) !important; /* خلفية برتقالية خفيفة جداً */
+    color: #fef3c7 !important; /* نص فاتح متناسق */
+    border-color: rgba(245, 158, 11, 0.2) !important;
+}
+
+/* تحسين النصوص الباهتة في الجدول */
+.dark-mode #reportsTable td {
+    color: #e2e8f0 !important;
+    vertical-align: middle;
+}
+
+.dark-mode #reportsTable .text-muted {
+    color: #94a3b8 !important;
+}
+
+/* تحسين أيقونات المستخدم داخل الجدول */
+.dark-mode #reportsTable .avatar-sm {
+    background-color: #334155 !important;
+    border: 1px solid #475569 !important;
+    color: #f1f5f9 !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* تحسين أزرار الإجراءات في الجدول */
+.dark-mode #reportsTable .btn-outline-primary,
+.dark-mode #reportsTable .btn-outline-success,
+.dark-mode #reportsTable .btn-outline-danger {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode #reportsTable .btn-outline-primary:hover { background-color: #3b82f6; color: white; }
+.dark-mode #reportsTable .btn-outline-success:hover { background-color: #10b981; color: white; }
+.dark-mode #reportsTable .btn-outline-danger:hover { background-color: #ef4444; color: white; }
+/* =========================================== */
+/* REPORTS PAGE DARK MODE SPECIFIC FIXES */
+/* =========================================== */
+
+/* إصلاح الخلفية الصفراء لصفوف الجدول في الوضع الليلي */
+.dark-mode #reportsTable .table-warning,
+.dark-mode #reportsTable .table-warning>td,
+.dark-mode #reportsTable .table-warning>th {
+    background-color: var(--card-bg) !important;
+    color: #e2e8f0 !important;
+}
+
+.dark-mode #reportsTable .table-warning:hover {
+    background-color: var(--table-hover-bg) !important;
+}
+
+/* تحسين جميع نصوص الجدول للوضع الليلي */
+.dark-mode #reportsTable td {
+    color: #e2e8f0 !important;
+}
+
+.dark-mode #reportsTable strong {
+    color: #f1f5f9 !important;
+}
+
+.dark-mode #reportsTable .text-muted {
+    color: #94a3b8 !important;
+}
+
+.dark-mode #reportsTable small {
+    color: #cbd5e1 !important;
+}
+
+/* تحسين مودال تفاصيل البلاغ للوضع الليلي */
+.dark-mode #reportDetailsModal .alert {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #e2e8f0 !important;
+}
+
+.dark-mode #reportDetailsModal .alert.alert-custom-details {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+    border-color: rgba(59, 130, 246, 0.2) !important;
+    color: #bfdbfe !important;
+}
+
+.dark-mode #reportDetailsModal .alert.alert-custom-info {
+    background-color: rgba(16, 185, 129, 0.1) !important;
+    border-color: rgba(16, 185, 129, 0.2) !important;
+    color: #a7f3d0 !important;
+}
+
+/* تحسين بطاقات مودال تفاصيل البلاغ */
+.dark-mode #reportDetailsModal .card {
+    background-color: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+
+.dark-mode #reportDetailsModal .card-body {
+    color: var(--text-color) !important;
+}
+
+.dark-mode #reportDetailsModal .card .text-muted {
+    color: #94a3b8 !important;
+}
+
+/* تحسين النصوص في مودال تفاصيل البلاغ */
+.dark-mode #reportDetailsModal h5,
+.dark-mode #reportDetailsModal h6,
+.dark-mode #reportDetailsModal strong {
+    color: #e2e8f0 !important;
+}
+
+.dark-mode #reportDetailsModal p {
+    color: #cbd5e1 !important;
+}
