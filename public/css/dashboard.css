@@ -1,0 +1,498 @@
+/* dashboard.css - Dashboard Specific Styles */
+
+/* Custom Sidebar */
+#sidebar {
+    min-height: calc(100vh - 56px);
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+/* Stat Cards Enhancement */
+.stat-card {
+    border: none;
+    border-radius: 12px;
+    background: var(--card-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card .card-body {
+    padding: 1.25rem;
+}
+
+.stat-card i {
+    opacity: 0.9;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card .card-header {
+    border-bottom: none;
+    background: var(--card-bg);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Chart Containers */
+.chart-container {
+    position: relative;
+    height: 250px;
+    width: 100%;
+}
+
+/* Activity Table */
+.activity-table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.activity-table tbody tr {
+    transition: background-color 0.2s;
+}
+
+.activity-table tbody tr:hover {
+    background-color: var(--table-hover-bg);
+}
+
+/* Progress Bars */
+.progress {
+    height: 8px;
+    border-radius: 4px;
+    background-color: var(--border-color);
+}
+
+.progress-bar {
+    border-radius: 4px;
+    background-color: var(--primary-color);
+}
+
+/* Badge Customization */
+.badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* Navigation Active State */
+.nav-link.active {
+    background: rgba(102, 126, 234, 0.1);
+    border-left: 3px solid #667eea;
+}
+
+/* Toast Notifications */
+.toast {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+/* Button Groups */
+.btn-group-sm > .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Form Controls in Dashboard */
+.form-control-sm {
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.form-control-sm:focus {
+    background-color: var(--card-bg);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    width: 3rem;
+    height: 3rem;
+    border-color: var(--primary-color);
+    border-right-color: transparent;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-color);
+}
+
+.empty-state i {
+    font-size: 4rem;
+    opacity: 0.3;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+/* Tooltip Customization */
+.tooltip {
+    border-radius: 8px;
+}
+
+.tooltip-inner {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+/* Pagination */
+.pagination {
+    margin-bottom: 0;
+}
+
+.page-link {
+    border-radius: 8px;
+    margin: 0 3px;
+    border: none;
+    color: var(--text-color);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+.page-link:hover {
+    background-color: var(--table-hover-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.page-item.active .page-link {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: white;
+}
+
+/* Card Headers */
+.card-header {
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+/* Dropdown Menus */
+.dropdown-menu {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+}
+
+.dropdown-item {
+    border-radius: 5px;
+    margin: 2px 8px;
+    padding: 8px 12px;
+    width: auto;
+    color: var(--text-color);
+}
+
+.dropdown-item:hover {
+    background-color: var(--table-hover-bg);
+    color: var(--text-color);
+}
+
+/* Avatar Sizes */
+.avatar-xs {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+}
+
+.avatar-sm {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+}
+
+.avatar-md {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+}
+
+.avatar-lg {
+    width: 64px;
+    height: 64px;
+    font-size: 2rem;
+}
+
+/* Status Indicators */
+.status-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-online {
+    background-color: var(--success-color);
+}
+
+.status-offline {
+    background-color: #6c757d;
+}
+
+.status-busy {
+    background-color: var(--warning-color);
+}
+
+.status-away {
+    background-color: var(--danger-color);
+}
+
+/* Grid System Enhancements */
+.row.gutter-sm {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.row.gutter-sm > [class*="col-"] {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* Alert Customization */
+.alert {
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.alert-dismissible .btn-close {
+    padding: 1rem;
+}
+
+/* Modal Customization */
+.modal-content {
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+}
+
+/* Table Row Animations */
+.table-hover tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--table-hover-bg);
+    transform: translateX(2px);
+}
+
+/* Custom Scrollbar for Sidebar */
+#sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+#sidebar::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+#sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .stat-card {
+        margin-bottom: 15px;
+    }
+    
+    .chart-container {
+        height: 200px;
+    }
+    
+    .dashboard-card {
+        margin-bottom: 20px;
+    }
+    
+    /* Mobile: 2 cards per row */
+    .row .col-md-3.col-6 {
+        width: 50%;
+        float: left;
+    }
+}
+
+@media (max-width: 576px) {
+    .row .col-md-3.col-6 {
+        width: 50%;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    
+    .stat-card-modern {
+        margin-bottom: 16px;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Card Hover Effects */
+.card-hover-effect {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card-hover-effect:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Custom Borders */
+.border-primary-light {
+    border-color: rgba(102, 126, 234, 0.2) !important;
+}
+
+.border-success-light {
+    border-color: rgba(16, 185, 129, 0.2) !important;
+}
+
+.border-danger-light {
+    border-color: rgba(245, 101, 101, 0.2) !important;
+}
+
+.border-warning-light {
+    border-color: rgba(245, 158, 11, 0.2) !important;
+}
+
+/* Background Utilities */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+}
+
+.bg-gradient-success {
+    background: linear-gradient(135deg, var(--success-color) 0%, #059669 100%) !important;
+}
+
+.bg-gradient-danger {
+    background: linear-gradient(135deg, var(--danger-color) 0%, #e53e3e 100%) !important;
+}
+
+.bg-gradient-warning {
+    background: linear-gradient(135deg, var(--warning-color) 0%, #d97706 100%) !important;
+}
+
+/* Text Utilities */
+.text-gradient {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Shadow Utilities */
+.shadow-sm {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07) !important;
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.shadow-xl {
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    border-radius: inherit;
+}
+
+/* Custom Checkbox and Radio */
+.custom-checkbox .form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.custom-radio .form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Toolbar */
+.toolbar {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+/* Divider */
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+    margin: 1.5rem 0;
+}
